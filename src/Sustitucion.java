@@ -1,7 +1,7 @@
 
 public class Sustitucion {
     
-     public static String encryptSubstitution(String message, int shift) {
+     public String encryptSubstitution(String message, int shift) {
         StringBuilder ciphertext = new StringBuilder();
 
         for (int i = 0; i < message.length(); i++) {
@@ -19,11 +19,11 @@ public class Sustitucion {
     }
      
      
-     public static String decryptSubstitution(String ciphertext, int shift) {
+     public  String decryptSubstitution(String ciphertext, int shift) {
         return encryptSubstitution(ciphertext, 26 - shift); // Descifrar es simplemente cifrar con el desplazamiento inverso
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         String originalMessage = "hola como estas";
         int shift = 3;
 
@@ -34,5 +34,5 @@ public class Sustitucion {
         System.out.println("Encrypted Message: " + encryptedMessage);
         System.out.println("descrypted Message: " + descryptedMessage);
     }
-    
+    */
 }

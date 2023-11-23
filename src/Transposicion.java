@@ -3,8 +3,9 @@ import java.util.Scanner;
 
 
 public class Transposicion {
+    
         // Método para encriptar un mensaje utilizando el método de transposición
-    public static String encryptMessage(String message, String key) {
+    public  String encryptMessage(String message, String key) {
         // Calcular el tamaño de la matriz de transposición
         int numRows = (int) Math.ceil((double) message.length() / key.length());
 
@@ -37,7 +38,7 @@ public class Transposicion {
     }
     
      // Método para desencriptar un mensaje utilizando el método de transposición
-    public static String decryptMessage(String encryptedMessage, String key) {
+    public  String decryptMessage(String encryptedMessage, String key) {
         // Calcular el tamaño de la matriz de transposición
         int numRows = (int) Math.ceil((double) encryptedMessage.length() / key.length());
 
@@ -64,7 +65,7 @@ public class Transposicion {
         return originalMessage.toString();
     }
 
-
+/*
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -86,5 +87,5 @@ public class Transposicion {
         // Mostrar el mensaje desencriptado
         //System.out.println("Mensaje desencriptado: " + decryptedMessage);
     }
-
+*/
 }

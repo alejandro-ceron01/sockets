@@ -12,6 +12,9 @@ import java.util.Observer;
  * @author usuario
  */
 public class Ventana1 extends javax.swing.JFrame  implements Observer{
+    
+    Sustitucion sus = new Sustitucion();
+    Transposicion tr = new Transposicion();
 
     /**
      * Creates new form Ventana1
@@ -38,6 +41,7 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
         jTextArea1 = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,10 +55,18 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
             }
         });
 
-        jButton1.setText("ENVIAR");
+        jButton1.setText("Transposicion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Sustitucion");
+        jButton6.setActionCommand("btnSustitucion");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -67,36 +79,62 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                     .addComponent(jTextField1))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton6))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addGap(21, 21, 21)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(27, 27, 27))
         );
 
+        jButton6.getAccessibleContext().setAccessibleName("btnSustitucion");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String mensaje = "1:" + this.jTextField1.getText() + "\n"; 
-         
-         this.jTextArea1.append(mensaje);
-         
+         String mensaje = jTextField1.getText(); 
+        String mensajeEncriptado = tr.encryptMessage(mensaje, "uceva");
+        jTextArea1.append("Ventana 1: " +
+                         "\n Mensaje cifrado: " + mensajeEncriptado + 
+                          "\n Mensaje descifrado: " + mensaje +
+                           "\n -----------------------------------------");
          Cliente c = new Cliente(6000, mensaje);
          Thread t = new Thread(c);
          t.start();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       
+        String mensaje = jTextField1.getText(); 
+        String mensajeEncriptado = sus.encryptSubstitution(mensaje, 3);
+        jTextArea1.append("Ventana 1: " +
+                         "\n Mensaje cifrado: " + mensajeEncriptado + 
+                          "\n Mensaje descifrado: " + mensaje +
+                           "\n -----------------------------------------");
+         Cliente c = new Cliente(6000, mensaje);
+         Thread t = new Thread(c);
+         t.start();
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +173,7 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
