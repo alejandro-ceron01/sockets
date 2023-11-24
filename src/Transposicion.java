@@ -34,7 +34,7 @@ public class Transposicion {
             }
         }
 
-        return encryptedMessage.toString();
+        return  encryptedMessage.toString();
     }
     
      // Método para desencriptar un mensaje utilizando el método de transposición

@@ -115,7 +115,7 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
         jTextArea1.append("Ventana 1: " +
                          "\n Mensaje cifrado: " + mensajeEncriptado + 
                           "\n Mensaje descifrado: " + mensaje +
-                           "\n -----------------------------------------");
+                           "\n ------------------------------------------------\n");
          Cliente c = new Cliente(6000, mensaje);
          Thread t = new Thread(c);
          t.start();
@@ -125,10 +125,10 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
        
         String mensaje = jTextField1.getText(); 
         String mensajeEncriptado = sus.encryptSubstitution(mensaje, 3);
-        jTextArea1.append("Ventana 1: " +
+        jTextArea1.append("\nVentana 1: " +
                          "\n Mensaje cifrado: " + mensajeEncriptado + 
                           "\n Mensaje descifrado: " + mensaje +
-                           "\n -----------------------------------------");
+                           "\n -----------------------------------------\n");
          Cliente c = new Cliente(6000, mensaje);
          Thread t = new Thread(c);
          t.start();
@@ -181,7 +181,8 @@ public class Ventana1 extends javax.swing.JFrame  implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-       this.jTextArea1.append((String) arg);
+       this.jTextArea1.append("Ventana 2: " + (String) arg +
+                           "\n -----------------------------------------\n");
 
     }
 }
